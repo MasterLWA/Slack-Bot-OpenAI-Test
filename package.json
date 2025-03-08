@@ -1,0 +1,22 @@
+{
+  "name": "slack-openai-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@azure/identity": "^4.7.0",
+    "@azure/openai": "^2.0.0",
+    "@slack/bolt": "^4.2.1",
+    "axios": "^1.8.2",
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9",
+    "openai": "^4.86.2"
+  }
+}
