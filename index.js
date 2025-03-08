@@ -7,6 +7,9 @@ console.log("SLACK_APP_TOKEN:", process.env.SLACK_APP_TOKEN);
 console.log("SLACK_SIGNING_SECRET:", process.env.SLACK_SIGNING_SECRET);
 
 
+const PORT = 5555; 
+
+
 const slackApp = new App({
     token: process.env.SLACK_BOT_TOKEN,
     appToken: process.env.SLACK_APP_TOKEN,  // ✅ Use SLACK_APP_TOKEN
@@ -39,6 +42,6 @@ slackApp.command('/performance', async ({ command, ack, say }) => {
 });
 
 (async () => {
-    await slackApp.start();
-    console.log('⚡️ Slack Bolt app is running!');
-})();
+    await slackApp.start(PORT);
+    console.log(`⚡️ Bolt app is running on port ${PORT}!`);
+} )();
