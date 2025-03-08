@@ -41,6 +41,37 @@ slackApp.command('/performance', async ({ command, ack, say }) => {
     }
 });
 
+// starting event 
+slackApp.event('app_home_opened', async ({ event, client }) => {
+    try {
+        await client.views.publish({
+            user_id: event.user,
+            view: {
+                type: 'home',
+                blocks: [
+                    {
+                        type: 'section',
+                        text: {
+                            type: 'mrkdwn',
+                            text: 'Welcome to the Performance Analysis App! :wave:'
+                        }
+                    },
+                    {
+                        type: 'section',
+                        text: {
+                            type: 'mrkdwn',
+                            text: 'Enter the performance data you would like to analyze using the `/performance` command.'
+                        }
+                    }
+                ]
+            }
+        });
+    } catch (error) {
+        console.error('Error publishing home view:', error);
+    }
+}
+);
+
 (async () => {
     await slackApp.start(PORT);
     console.log(`⚡️ Bolt app is running on port ${PORT}!`);
